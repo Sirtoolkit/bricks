@@ -13,17 +13,15 @@ abstract class {{name.pascalCase()}}RemoteDataSource {
 
 class {{name.pascalCase()}}RemoteDataSourceImpl implements {{name.pascalCase()}}RemoteDataSource {
   final http.Client client;
-  final String baseUrl;
   
   {{name.pascalCase()}}RemoteDataSourceImpl({
     required this.client,
-    required this.baseUrl,
   });
   
   @override
   Future<List<{{name.pascalCase()}}Model>> fetchAll() async {
     final response = await client.get(
-      Uri.parse('$baseUrl/{{name.snakeCase()}}s'),
+      Uri.parse('/{{name.snakeCase()}}s'),
       headers: {'Content-Type': 'application/json'},
     );
     
