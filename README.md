@@ -59,4 +59,4 @@ mason make core_brick
 ## Requirements
 
 - Flutter project
-- Mason CLI installed
+- Mason CLI installed# fierros_mason_mobile_templates
