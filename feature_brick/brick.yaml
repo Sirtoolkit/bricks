@@ -1,0 +1,14 @@
+name: feature_brick
+description: A brick to generate Clean Architecture feature structure for Flutter apps
+version: 0.1.0
+environment:
+  mason: ">=0.1.0-dev <0.1.0"
+vars:
+  name:
+    type: string
+    description: Feature name
+    prompt: What is the name of your feature?
+  project_name:
+    type: string
+    description: Project name (should match pubspec.yaml name)
+    prompt: What is your project name?
