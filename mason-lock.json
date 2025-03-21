@@ -1,1 +1,10 @@
-{"bricks":{"feature_brick":{"path":"/Users/cesarleonardo/AndroidStudioProjects/bricks/feature_brick"}}}
+{
+    "bricks": {
+        "core_brick": {
+            "path": "/Users/cesarleonardo/AndroidStudioProjects/bricks/core_brick"
+        },
+        "feature_brick": {
+            "path": "/Users/cesarleonardo/AndroidStudioProjects/bricks/feature_brick"
+        }
+    }
+}

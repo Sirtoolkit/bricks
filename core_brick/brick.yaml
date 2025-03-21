@@ -1,0 +1,5 @@
+name: core_brick
+description: A brick to generate core utilities for Clean Architecture in Flutter
+version: 0.1.0
+environment:
+  mason: ^0.1.0

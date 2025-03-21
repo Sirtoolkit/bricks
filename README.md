@@ -45,6 +45,7 @@ feature_name/
 
 ```bash
 mason make feature_brick --name your_feature_name --project_name your_project_name
+mason make core_brick
 ```
 
 ## Features

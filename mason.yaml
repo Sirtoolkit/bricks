@@ -9,6 +9,8 @@ bricks:
   # Feature Brick - Clean Architecture Feature Implementation
   feature_brick:
     path: feature_brick
+  core_brick:
+    path: core_brick
     
   # Bricks can also be imported via remote git url.
   # Uncomment the following lines to import the "widget" brick from git.
