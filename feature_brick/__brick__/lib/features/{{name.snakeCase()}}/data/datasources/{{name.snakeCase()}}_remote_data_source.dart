@@ -24,7 +24,7 @@ class {{name.pascalCase()}}RemoteDataSourceImpl implements {{name.pascalCase()}}
   Future<Result<List<{{name.pascalCase()}}Model>>> findAll() async {
     try {
       // Updated the endpoint to use dynamic name based on the feature
-      // final response = await dio.get('/categories');
+      // final response = await dio.get('/{{name.snakeCase()}}');
 
       // Uncommented status code validation
       // if (response.statusCode != 200) {
