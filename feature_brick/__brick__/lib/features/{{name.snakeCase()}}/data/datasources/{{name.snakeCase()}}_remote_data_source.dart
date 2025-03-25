@@ -17,10 +17,9 @@ abstract class {{name.pascalCase()}}RemoteDataSource {
 
 @LazySingleton(as: {{name.pascalCase()}}RemoteDataSource)
 class {{name.pascalCase()}}RemoteDataSourceImpl implements {{name.pascalCase()}}RemoteDataSource {
-  // Uncommented the Dio API call
-  // final Dio dio;
+  final Dio dio;
 
-  {{name.pascalCase()}}RemoteDataSourceImpl({required this.client});
+  {{name.pascalCase()}}RemoteDataSourceImpl({required this.dio});
 
   @override
   Future<Result<List<{{name.pascalCase()}}Model>>> findAll() async {
