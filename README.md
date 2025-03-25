@@ -60,3 +60,34 @@ mason make core_brick
 
 - Flutter project
 - Mason CLI installed# fierros_mason_mobile_templates
+
+## Required Packages
+
+Run the following command to install all necessary dependencies:
+
+```bash
+flutter pub add injectable get_it freezed_annotation json_annotation bloc flutter_bloc meta dio hive connectivity_plus
+```
+
+These packages provide:
+- `injectable` & `get_it`: Dependency injection
+- `freezed_annotation` & `json_annotation`: Code generation for data classes
+- `bloc` & `flutter_bloc`: State management
+- `meta`: Additional annotations
+- `dio`: HTTP client
+- `hive`: Local storage
+- `connectivity_plus`: Network connectivity handling
+
+## Development Dependencies
+
+Run the following command to install the required dev dependencies:
+
+```bash
+flutter pub add --dev injectable_generator build_runner freezed json_serializable
+```
+
+These dev packages provide:
+- `injectable_generator`: Code generation for dependency injection
+- `build_runner`: Dart build system for code generation
+- `freezed`: Code generation for immutable classes
+- `json_serializable`: JSON serialization/deserialization code generation
