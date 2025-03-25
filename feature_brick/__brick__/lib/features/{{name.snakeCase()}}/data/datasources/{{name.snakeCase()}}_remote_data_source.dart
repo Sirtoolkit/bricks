@@ -31,13 +31,13 @@ class {{name.pascalCase()}}RemoteDataSourceImpl implements {{name.pascalCase()}}
         );
       }
 
-      final json = response.data as Map<String, dynamic>;
+      final json = jsonDecode(response.body);
 
       final dataList = json['data'] as List;
       final data = dataList.map((e) => {{name.pascalCase()}}Model.fromJson(e)).toList();
       return Success(data);
     } catch (e) {
-      return Error(ServerException('Dio Error: ${e.message}'));
+      return Error(ServerException('Dio Error: ${e.toString()}'));
     }
   }
 }

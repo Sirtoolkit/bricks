@@ -1,9 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:{{project_name}}/core/error/app_exception.dart';
-import 'package:{{project_name}}/core/usecases/usecase.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/domain/usecases/find_all_{{name.snakeCase()}}.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/presentation/cubit/{{name.snakeCase()}}_state.dart';
+import 'package:{{project_name}}/core/usecases/use_case.dart';
+import 'package:{{project_name}}/features/{{name.snakeCase()}}/domain/domain.dart';
 
 part '{{name.snakeCase()}}_state.dart';
 
