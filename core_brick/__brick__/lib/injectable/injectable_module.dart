@@ -1,11 +1,12 @@
 import 'package:injectable/injectable.dart';
-import 'package:http/http.dart' as http;
+import 'package:dio/dio.dart';
+import '../core/services/dio_service.dart';
 
 @module
 abstract class RegisterModule {
   @lazySingleton
-  http.Client get httpClient {
-    final client = http.Client();
-    return client;
-  }
+  DioService get dioService => DioService();
+
+  @lazySingleton
+  Dio get dio => dioService.client;
 }

@@ -18,43 +18,63 @@ class _{{name.pascalCase()}}PageState extends State<{{name.pascalCase()}}Page> {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text('{{name.pascalCase()}} Page', style: textTheme.headlineMedium),
+        actions: [
+          IconButton(
+            onPressed: () {
+              context.read<{{name.pascalCase()}}Cubit>().findAll();
+            },
+            icon: const Icon(Icons.refresh),
+          ),
+        ],
+      ),
       body: SafeArea(
         child: RefreshIndicator(
           onRefresh: () async {
             context.read<{{name.pascalCase()}}Cubit>().findAll();
           },
-          child: SingleChildScrollView(
-            physics: const AlwaysScrollableScrollPhysics(),
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              spacing: 16,
-              children: [
-                Text('{{name.pascalCase()}}'),
-                Expanded(
-                  child: BlocBuilder<{{name.pascalCase()}}Cubit, {{name.pascalCase()}}State>(
-                    builder: (_, state) {
-                      return switch (state) {
-                        {{name.pascalCase()}}StateLoading() => const Center(child: CircularProgressIndicator()),
-                        {{name.pascalCase()}}StateError() => const Center(child: Text('Error')),
-                        {{name.pascalCase()}}StateLoaded() => ListView.separated(
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              return ConstrainedBox(
+                constraints: BoxConstraints(
+                  minHeight: constraints.maxHeight,
+                  maxHeight: constraints.maxHeight,
+                ),
+                child: SingleChildScrollView(
+                  physics: const AlwaysScrollableScrollPhysics(),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: BlocBuilder<{{name.pascalCase()}}Cubit, {{name.pascalCase()}}State>(
+                      builder: (_, state) {
+                        return switch (state) {
+                          {{name.pascalCase()}}StateLoading() => const Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                          {{name.pascalCase()}}StateError() => const Center(
+                            child: Text('Error'),
+                          ),
+                          {{name.pascalCase()}}StateLoaded() => ListView.separated(
                             separatorBuilder: (_, __) => SizedBox(height: 12),
                             shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
                             itemCount: state.{{name.snakeCase()}}.length,
                             itemBuilder: (context, i) {
                               final item = state.{{name.snakeCase()}}[i];
                               return ListTile(title: Text(item.name));
                             },
                           ),
-                        _ => Container(),
-                      };
-                    },
+                          _ => Container(),
+                        };
+                      },
+                    ),
                   ),
                 ),
-              ],
-            ),
+              );
+            },
           ),
         ),
       ),
