@@ -29,5 +29,6 @@ class {{name.pascalCase()}}Cubit extends Cubit<{{name.pascalCase()}}State> {
 
 String _mapFailureToMessage(AppException failure) {
   if (failure is ServerException) return 'Server Error: ${failure.message}';
+  if (failure is NetworkException) return 'Network Error: ${failure.message}';
   return 'Unknown error occurred.';
 }
