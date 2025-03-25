@@ -18,6 +18,7 @@ class {{name.pascalCase()}}Cubit extends Cubit<{{name.pascalCase()}}State> {
   }
 
   Future<void> findAll() async {
+    emit({{name.pascalCase()}}StateLoading());
     final result = await findAll{{name.pascalCase()}}(NoParams());
     result.when(
       success: (data) => emit({{name.pascalCase()}}StateLoaded(data)),
