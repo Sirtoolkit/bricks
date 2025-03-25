@@ -13,7 +13,7 @@ class {{name.pascalCase()}}RepositoryImpl implements {{name.pascalCase()}}Reposi
   final ConnectivityService connectivityService;
 
   {{name.pascalCase()}}RepositoryImpl({
-    required this.remoteDataSource
+    required this.remoteDataSource,
     required this.connectivityService,
   });
 
