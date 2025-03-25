@@ -54,8 +54,8 @@ class _{{name.pascalCase()}}PageState extends State<{{name.pascalCase()}}Page> {
                           {{name.pascalCase()}}StateLoading() => const Center(
                             child: CircularProgressIndicator(),
                           ),
-                          {{name.pascalCase()}}StateError() => const Center(
-                            child: Text('Error'),
+                          {{name.pascalCase()}}StateError() => Center(
+                            child: Text(state.message),
                           ),
                           {{name.pascalCase()}}StateLoaded() => ListView.separated(
                             separatorBuilder: (_, __) => SizedBox(height: 12),
