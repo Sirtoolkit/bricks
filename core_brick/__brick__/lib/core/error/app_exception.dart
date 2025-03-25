@@ -1,6 +1,8 @@
 class AppException implements Exception {
   final String message;
+
   AppException(this.message);
+
   @override
   String toString() => message;
 }
@@ -27,4 +29,12 @@ class UnauthorizedException extends AppException {
 
 class DioFailure extends AppException {
   DioFailure([super.message = 'Dio error occurred']);
+}
+
+class TimeoutException extends AppException {
+  TimeoutException([super.message = 'Connection timeout']);
+}
+
+class BadRequestException extends AppException {
+  BadRequestException([super.message = 'Bad request']);
 }
