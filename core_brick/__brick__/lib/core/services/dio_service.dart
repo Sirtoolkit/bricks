@@ -9,7 +9,7 @@ class DioService {
   DioService() {
     _dio = Dio(
       BaseOptions(
-        baseUrl: 'YOUR_BASE_URL',
+        baseUrl: 'https://api.example.com',
         connectTimeout: const Duration(seconds: 5),
         receiveTimeout: const Duration(seconds: 3),
         headers: {
