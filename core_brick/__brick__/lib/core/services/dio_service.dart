@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import '../error/app_exception.dart';
 
-@lazySingleton
+@singleton
 class DioService {
   late final Dio _dio;
 

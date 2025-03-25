@@ -3,10 +3,7 @@ import 'package:dio/dio.dart';
 import '../core/services/dio_service.dart';
 
 @module
-abstract class RegisterModule {
-  @lazySingleton
-  DioService get dioService => DioService();
-
-  @lazySingleton
-  Dio get dio => dioService.client;
+abstract class InjectableModule {
+  @singleton
+  Dio dio(DioService dioService) => dioService.client;
 }
