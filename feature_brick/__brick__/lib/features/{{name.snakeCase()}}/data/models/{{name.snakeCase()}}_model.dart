@@ -1,40 +1,19 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/domain/entities/{{name.snakeCase()}}_entity.dart';
 
-class {{name.pascalCase()}}Model {
-  final String id;
-  final String name;
-  // Añade otros campos según necesites
-  
-  {{name.pascalCase()}}Model({
-    required this.id,
-    required this.name,
-  });
-  
-  factory {{name.pascalCase()}}Model.fromJson(Map<String, dynamic> json) {
-    return {{name.pascalCase()}}Model(
-      id: json['id'].toString(),
-      name: json['name'] as String,
-    );
-  }
-  
-  factory {{name.pascalCase()}}Model.fromEntity({{name.pascalCase()}}Entity entity) {
-    return {{name.pascalCase()}}Model(
-      id: entity.id,
-      name: entity.name,
-    );
-  }
-  
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'name': name,
-    };
-  }
-  
-  {{name.pascalCase()}}Entity toEntity() {
-    return {{name.pascalCase()}}Entity(
-      id: id,
-      name: name,
-    );
-  }
+part '{{name.snakeCase()}}_model.freezed.dart';
+part '{{name.snakeCase()}}_model.g.dart';
+
+@freezed
+abstract class {{name.pascalCase()}}Model with _${{name.pascalCase()}}Model {
+  const factory {{name.pascalCase()}}Model({
+    required int id,
+    required String name,
+  }) = _{{name.pascalCase()}}Model;
+
+  factory {{name.pascalCase()}}Model.fromJson(Map<String, dynamic> json) => _${{name.pascalCase()}}ModelFromJson(json);
+}
+
+extension {{name.pascalCase()}}ModelX on {{name.pascalCase()}}Model {
+  {{name.pascalCase()}}Entity toEntity() => {{name.pascalCase()}}Entity(id: id, name: name);
 }

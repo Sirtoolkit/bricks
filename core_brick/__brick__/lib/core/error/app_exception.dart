@@ -1,30 +1,30 @@
 class AppException implements Exception {
   final String message;
-
   AppException(this.message);
-
   @override
   String toString() => message;
 }
 
 class NetworkException extends AppException {
-  NetworkException([String message = 'No internet connection'])
-    : super(message);
+  NetworkException([super.message = 'No internet connection']);
 }
 
 class ServerException extends AppException {
-  ServerException([String message = 'Server error occurred']) : super(message);
+  ServerException([super.message = 'Server error occurred']);
 }
 
 class NotFoundException extends AppException {
-  NotFoundException([String message = 'Resource not found']) : super(message);
+  NotFoundException([super.message = 'Resource not found']);
 }
 
 class ValidationException extends AppException {
-  ValidationException([String message = 'Validation error']) : super(message);
+  ValidationException([super.message = 'Validation error']);
 }
 
 class UnauthorizedException extends AppException {
-  UnauthorizedException([String message = 'Unauthorized access'])
-    : super(message);
+  UnauthorizedException([super.message = 'Unauthorized access']);
+}
+
+class DioFailure extends AppException {
+  DioFailure([super.message = 'Dio error occurred']);
 }

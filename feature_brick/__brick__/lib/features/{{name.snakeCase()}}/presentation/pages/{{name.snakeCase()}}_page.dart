@@ -1,49 +1,63 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/presentation/cubit/{{name.snakeCase()}}_cubit.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/domain/entities/{{name.snakeCase()}}_entity.dart';
+import 'package:{{project_name}}/features/{{name.snakeCase()}}/presentation/cubit/{{name.snakeCase()}}_state.dart';
 
-class {{name.pascalCase()}}Page extends StatelessWidget {
-  const {{name.pascalCase()}}Page({Key? key}) : super(key: key);
+class {{name.pascalCase()}}Page extends StatefulWidget {
+  const {{name.pascalCase()}}Page({super.key});
+
+  @override
+  State<{{name.pascalCase()}}Page> createState() => _{{name.pascalCase()}}PageState();
+}
+
+class _{{name.pascalCase()}}PageState extends State<{{name.pascalCase()}}Page> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<{{name.pascalCase()}}Cubit>().init();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('{{name.pascalCase()}}'),
-      ),
-      body: BlocBuilder<{{name.pascalCase()}}Cubit, {{name.pascalCase()}}State>(
-        builder: (context, state) {
-          if (state is {{name.pascalCase()}}Initial) {
-            // Carga inicial
-            context.read<{{name.pascalCase()}}Cubit>().fetchAll{{name.pascalCase()}}();
-            return const Center(child: CircularProgressIndicator());
-          } else if (state is {{name.pascalCase()}}Loading) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (state is {{name.pascalCase()}}Loaded) {
-            final items = state.{{name.camelCase()}}s;
-            return ListView.builder(
-              itemCount: items.length,
-              itemBuilder: (context, index) {
-                final item = items[index];
-                return ListTile(
-                  title: Text(item.name),
-                  // Añadir más acciones según sea necesario
-                );
-              },
-            );
-          } else if (state is {{name.pascalCase()}}Error) {
-            return Center(child: Text(state.message));
-          } else {
-            return const Center(child: Text('Estado desconocido'));
-          }
-        },
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Navegar a la pantalla de creación
-        },
-        child: const Icon(Icons.add),
+      appBar: AppBar(),
+      body: SafeArea(
+        child: RefreshIndicator(
+          onRefresh: () async {
+            context.read<{{name.pascalCase()}}Cubit>().findAll();
+          },
+          child: SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              spacing: 16,
+              children: [
+                Text('{{name.pascalCase()}}'),
+                Expanded(
+                  child: BlocBuilder<{{name.pascalCase()}}Cubit, {{name.pascalCase()}}State>(
+                    builder: (_, state) {
+                      return switch (state) {
+                        {{name.pascalCase()}}StateLoading() => const Center(child: CircularProgressIndicator()),
+                        {{name.pascalCase()}}StateError() => const Center(child: Text('Error')),
+                        {{name.pascalCase()}}StateLoaded() => ListView.separated(
+                            separatorBuilder: (_, __) => SizedBox(height: 12),
+                            shrinkWrap: true,
+                            itemCount: state.{{name.snakeCase()}}.length,
+                            itemBuilder: (context, i) {
+                              final item = state.{{name.snakeCase()}}[i];
+                              return ListTile(title: Text(item.name));
+                            },
+                          ),
+                        _ => Container(),
+                      };
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

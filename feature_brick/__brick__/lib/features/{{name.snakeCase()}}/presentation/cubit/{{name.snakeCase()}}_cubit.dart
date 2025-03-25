@@ -1,25 +1,33 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/domain/entities/{{name.snakeCase()}}_entity.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/domain/usecases/get_all_{{name.snakeCase()}}.dart';
+import 'package:bloc/bloc.dart';
+import 'package:injectable/injectable.dart';
+import 'package:{{project_name}}/core/error/app_exception.dart';
 import 'package:{{project_name}}/core/usecases/usecase.dart';
+import 'package:{{project_name}}/features/{{name.snakeCase()}}/domain/usecases/find_all_{{name.snakeCase()}}.dart';
+import 'package:{{project_name}}/features/{{name.snakeCase()}}/presentation/cubit/{{name.snakeCase()}}_state.dart';
 
 part '{{name.snakeCase()}}_state.dart';
 
+@lazySingleton
 class {{name.pascalCase()}}Cubit extends Cubit<{{name.pascalCase()}}State> {
-  final GetAll{{name.pascalCase()}} getAllUseCase;
-  
-  {{name.pascalCase()}}Cubit({
-    required this.getAllUseCase,
-  }) : super({{name.pascalCase()}}Initial());
+  final FindAll{{name.pascalCase()}} findAll{{name.pascalCase()}};
 
-  Future<void> fetchAll{{name.pascalCase()}}() async {
-    emit({{name.pascalCase()}}Loading());
-    
-    final result = await getAllUseCase(const NoParams());
-    
+  {{name.pascalCase()}}Cubit({required this.findAll{{name.pascalCase()}}}) : super({{name.pascalCase()}}StateInitial());
+
+  Future<void> init() async {
+    if (state is {{name.pascalCase()}}StateLoaded) return;
+    await findAll();
+  }
+
+  Future<void> findAll() async {
+    final result = await findAll{{name.pascalCase()}}(NoParams());
     result.when(
-      success: (data) => emit({{name.pascalCase()}}Loaded(data)),
-      failure: (error) => emit({{name.pascalCase()}}Error(error.message)),
+      success: (data) => emit({{name.pascalCase()}}StateLoaded(data)),
+      failure: (error) => emit({{name.pascalCase()}}StateError(_mapFailureToMessage(error))),
     );
   }
+}
+
+String _mapFailureToMessage(AppException failure) {
+  if (failure is ServerException) return 'Server Error: ${failure.message}';
+  return 'Unknown error occurred.';
 }

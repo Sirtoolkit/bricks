@@ -10,9 +10,8 @@ class {{name.pascalCase()}}Initial extends {{name.pascalCase()}}State {}
 class {{name.pascalCase()}}Loading extends {{name.pascalCase()}}State {}
 
 class {{name.pascalCase()}}Loaded extends {{name.pascalCase()}}State {
-  final List<{{name.pascalCase()}}Entity> {{name.camelCase()}}s;
-  
-  const {{name.pascalCase()}}Loaded(this.{{name.camelCase()}}s);
+  final List<{{name.pascalCase()}}Entity> {{name.camelCase()}};
+  const {{name.pascalCase()}}Loaded(this.{{name.camelCase()}});
 }
 
 class {{name.pascalCase()}}Error extends {{name.pascalCase()}}State {
