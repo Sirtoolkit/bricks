@@ -7,8 +7,8 @@ part '{{name.snakeCase()}}_model.g.dart';
 @freezed
 abstract class {{name.pascalCase()}}Model with _${{name.pascalCase()}}Model {
   const factory {{name.pascalCase()}}Model({
-    required int id,
-    required String name,
+    @Default(0) int id,
+    @Default('') String name,
   }) = _{{name.pascalCase()}}Model;
 
   factory {{name.pascalCase()}}Model.fromJson(Map<String, dynamic> json) => _${{name.pascalCase()}}ModelFromJson(json);
