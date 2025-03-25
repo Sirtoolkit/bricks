@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/presentation/cubit/{{name.snakeCase()}}_cubit.dart';
+import 'package:{{project_name}}/core/error/app_exception.dart';
 
 class {{name.pascalCase()}}Page extends StatefulWidget {
   const {{name.pascalCase()}}Page({super.key});
@@ -54,8 +55,22 @@ class _{{name.pascalCase()}}PageState extends State<{{name.pascalCase()}}Page> {
                           {{name.pascalCase()}}StateLoading() => const Center(
                             child: CircularProgressIndicator(),
                           ),
-                          {{name.pascalCase()}}StateError() => Center(
-                            child: Text(state.message),
+                          {{name.pascalCase()}}StateError() => Column(
+                            children: [
+                              if (state.exception is NetworkException) ...[
+                                Text(
+                                  'Network Error',
+                                  style: textTheme.bodyMedium,
+                                ),
+                              ],
+
+                              if (state.exception is ServerException) ...[
+                                Text(
+                                  state.message,
+                                  style: textTheme.bodyMedium,
+                                ),
+                              ],
+                            ],
                           ),
                           {{name.pascalCase()}}StateLoaded() => ListView.separated(
                             separatorBuilder: (_, __) => SizedBox(height: 12),

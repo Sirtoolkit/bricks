@@ -22,13 +22,7 @@ class {{name.pascalCase()}}Cubit extends Cubit<{{name.pascalCase()}}State> {
     final result = await findAll{{name.pascalCase()}}(NoParams());
     result.when(
       success: (data) => emit({{name.pascalCase()}}StateLoaded(data)),
-      failure: (error) => emit({{name.pascalCase()}}StateError(_mapFailureToMessage(error))),
+      failure: (error) => emit({{name.pascalCase()}}StateError(error.message, error)),
     );
   }
-}
-
-String _mapFailureToMessage(AppException failure) {
-  if (failure is ServerException) return 'Server Error: ${failure.message}';
-  if (failure is NetworkException) return 'Network Error: ${failure.message}';
-  return 'Unknown error occurred.';
 }

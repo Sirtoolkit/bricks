@@ -1,4 +1,3 @@
-// part file
 part of '{{name.snakeCase()}}_cubit.dart';
 
 abstract class {{name.pascalCase()}}State {
@@ -15,7 +14,7 @@ class {{name.pascalCase()}}StateLoaded extends {{name.pascalCase()}}State {
 }
 
 class {{name.pascalCase()}}StateError extends {{name.pascalCase()}}State {
+  final AppException exception;
   final String message;
-  
-  const {{name.pascalCase()}}StateError(this.message);
+  const {{name.pascalCase()}}StateError(this.message, this.exception);
 }
