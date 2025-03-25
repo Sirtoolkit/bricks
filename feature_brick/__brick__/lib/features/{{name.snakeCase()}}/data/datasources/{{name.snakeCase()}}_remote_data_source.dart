@@ -36,10 +36,11 @@ class {{name.pascalCase()}}RemoteDataSourceImpl implements {{name.pascalCase()}}
 
        // Commented out the mock delay since we're using real API
        await Future.delayed(const Duration(seconds: 3));
+      final data = dataListMock.map((e) => {{name.pascalCase()}}Model.fromJson(e)).toList();
 
       // Updated to use actual API response data instead of mock data
       // final dataList = json['data'] as List;
-      final data = dataListMock.map((e) => {{name.pascalCase()}}Model.fromJson(e)).toList();
+      // final data = dataList.map((e) => {{name.pascalCase()}}Model.fromJson(e)).toList();
       return Success(data);
     } catch (e) {
       return Error(ServerException('Dio Error: ${e.toString()}'));
