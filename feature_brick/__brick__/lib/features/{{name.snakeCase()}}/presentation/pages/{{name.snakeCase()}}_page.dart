@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/presentation/cubit/{{name.snakeCase()}}_cubit.dart';
 import 'package:{{project_name}}/core/error/app_exception.dart';
+import 'package:{{project_name}}/core/state/loadable.dart';
 
 class {{name.pascalCase()}}Page extends StatefulWidget {
   const {{name.pascalCase()}}Page({super.key});
@@ -49,13 +50,13 @@ class _{{name.pascalCase()}}PageState extends State<{{name.pascalCase()}}Page> {
                   physics: const AlwaysScrollableScrollPhysics(),
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
-                    child: BlocBuilder<{{name.pascalCase()}}Cubit, {{name.pascalCase()}}State>(
+                    child: BlocBuilder<{{name.pascalCase()}}Cubit, Loadable<List<{{name.pascalCase()}}Entity>>>(
                       builder: (_, state) {
                         return switch (state) {
-                          {{name.pascalCase()}}StateLoading() => const Center(
+                          LoadableLoading() => const Center(
                             child: CircularProgressIndicator(),
                           ),
-                          {{name.pascalCase()}}StateError() => Column(
+                          LoadableError() => Column(
                             children: [
                               if (state.exception is NetworkException) ...[
                                 Text(
@@ -63,7 +64,6 @@ class _{{name.pascalCase()}}PageState extends State<{{name.pascalCase()}}Page> {
                                   style: textTheme.bodyMedium,
                                 ),
                               ],
-
                               if (state.exception is ServerException) ...[
                                 Text(
                                   state.message,
@@ -72,13 +72,13 @@ class _{{name.pascalCase()}}PageState extends State<{{name.pascalCase()}}Page> {
                               ],
                             ],
                           ),
-                          {{name.pascalCase()}}StateLoaded() => ListView.separated(
+                         LoadableSuccess(:final data) => ListView.separated(
                             separatorBuilder: (_, __) => SizedBox(height: 12),
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
-                            itemCount: state.{{name.snakeCase()}}.length,
+                            itemCount: data.length,
                             itemBuilder: (context, i) {
-                              final item = state.{{name.snakeCase()}}[i];
+                              final item = data[i];
                               return ListTile(title: Text(item.name));
                             },
                           ),
