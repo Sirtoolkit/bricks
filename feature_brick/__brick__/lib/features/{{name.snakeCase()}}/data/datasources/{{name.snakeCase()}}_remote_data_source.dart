@@ -34,8 +34,8 @@ class {{name.pascalCase()}}RemoteDataSourceImpl implements {{name.pascalCase()}}
       // Uncommented JSON response handling
       // final json = response.data as Map<String, dynamic>;
 
-       // Commented out the mock delay since we're using real API
-       await Future.delayed(const Duration(seconds: 3));
+      // Commented out the mock delay since we're using real API
+      await Future.delayed(const Duration(seconds: 3));
       final data = dataListMock.map((e) => {{name.pascalCase()}}Model.fromJson(e)).toList();
 
       // Updated to use actual API response data instead of mock data
