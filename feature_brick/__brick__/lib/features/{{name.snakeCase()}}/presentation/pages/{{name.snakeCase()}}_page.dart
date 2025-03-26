@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/presentation/cubit/{{name.snakeCase()}}_cubit.dart';
+import 'package:app_bloc/features/{{name.snakeCase()}}/{{name.snakeCase()}}.dart';
 import 'package:{{project_name}}/core/error/app_exception.dart';
 import 'package:{{project_name}}/core/state/loadable.dart';
 
@@ -58,13 +58,13 @@ class _{{name.pascalCase()}}PageState extends State<{{name.pascalCase()}}Page> {
                           ),
                           LoadableError() => Column(
                             children: [
-                              if (state.exception is NetworkException) ...[
+                              if (state.error is NetworkException) ...[
                                 Text(
                                   'Network Error',
                                   style: textTheme.bodyMedium,
                                 ),
                               ],
-                              if (state.exception is ServerException) ...[
+                              if (state.error is ServerException) ...[
                                 Text(
                                   state.message,
                                   style: textTheme.bodyMedium,
