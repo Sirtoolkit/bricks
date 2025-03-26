@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:app_bloc/features/{{name.snakeCase()}}/{{name.snakeCase()}}.dart';
+import 'package:{{project_name}}/features/{{name.snakeCase()}}/{{name.snakeCase()}}.dart';
 import 'package:{{project_name}}/core/error/app_exception.dart';
 import 'package:{{project_name}}/core/state/loadable.dart';
 
