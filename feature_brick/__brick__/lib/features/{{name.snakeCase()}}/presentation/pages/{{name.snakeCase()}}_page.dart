@@ -56,17 +56,17 @@ class _{{name.pascalCase()}}PageState extends State<{{name.pascalCase()}}Page> {
                           LoadableLoading() => const Center(
                             child: CircularProgressIndicator(),
                           ),
-                          LoadableError() => Column(
+                          LoadableError(:final error, :final message) => Column(
                             children: [
-                              if (state.error is NetworkException) ...[
+                              if (error is NetworkException) ...[
                                 Text(
                                   'Network Error',
                                   style: textTheme.bodyMedium,
                                 ),
                               ],
-                              if (state.error is ServerException) ...[
+                              if (error is ServerException) ...[
                                 Text(
-                                  state.message,
+                                  message,
                                   style: textTheme.bodyMedium,
                                 ),
                               ],
