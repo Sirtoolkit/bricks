@@ -1,8 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:{{project_name}}/core/core.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/models/{{name.snakeCase()}}_model.dart';
-import 'package:{{project_name}}/core/error/app_exception.dart';
-import 'package:{{project_name}}/core/utils/result.dart';
 
 final dataListMock = [
   {"id": 1, "name": "delectus aut autem"},
@@ -23,24 +22,20 @@ class {{name.pascalCase()}}RemoteDataSourceImpl implements {{name.pascalCase()}}
   @override
   Future<Result<List<{{name.pascalCase()}}Model>>> findAll() async {
     try {
-      // Updated the endpoint to use dynamic name based on the feature
+      // Uncomment the following lines to use the actual API
       // final response = await dio.get('/{{name.snakeCase()}}');
-
-      // Uncommented status code validation
       // if (response.statusCode != 200) {
       //   return Error(ServerException('Error: Received invalid status code ${response.statusCode}'));
       // }
-
-      // Uncommented JSON response handling
       // final json = response.data as Map<String, dynamic>;
-
-      // Commented out the mock delay since we're using real API
-      await Future.delayed(const Duration(seconds: 3));
-      final data = dataListMock.map((e) => {{name.pascalCase()}}Model.fromJson(e)).toList();
-
-      // Updated to use actual API response data instead of mock data
       // final dataList = json['data'] as List;
       // final data = dataList.map((e) => {{name.pascalCase()}}Model.fromJson(e)).toList();
+
+      // Mocking the response for demonstration purposes
+      final data = dataListMock.map((e) => {{name.pascalCase()}}Model.fromJson(e)).toList();
+      // Simulating a delay to mimic network call
+      await Future.delayed(const Duration(seconds: 2));
+      
       return Success(data);
     } catch (e) {
       return Error(ServerException('Dio Error: ${e.toString()}'));

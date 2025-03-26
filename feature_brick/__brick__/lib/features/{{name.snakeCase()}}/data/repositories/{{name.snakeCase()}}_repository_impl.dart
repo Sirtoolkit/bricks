@@ -1,4 +1,4 @@
-import 'package:app_bloc/core/core.dart';
+import 'package:{{project_name}}/core/core.dart';
 import 'package:injectable/injectable.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/datasources/{{name.snakeCase()}}_remote_data_source.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/datasources/{{name.snakeCase()}}_local_data_source.dart';
