@@ -66,7 +66,7 @@ mason make core_brick
 Run the following command to install all necessary dependencies:
 
 ```bash
-flutter pub add injectable get_it freezed_annotation json_annotation bloc flutter_bloc meta dio hive connectivity_plus
+flutter pub add injectable get_it freezed_annotation json_annotation bloc flutter_bloc meta dio hive connectivity_plus skeletonizer path_provider
 ```
 
 These packages provide:
@@ -77,6 +77,8 @@ These packages provide:
 - `dio`: HTTP client
 - `hive`: Local storage
 - `connectivity_plus`: Network connectivity handling
+- `skeletonizer`: Loading state UI components
+- `path_provider`: Access to filesystem locations
 
 ## Development Dependencies
 
