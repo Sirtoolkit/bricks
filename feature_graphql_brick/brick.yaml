@@ -1,5 +1,5 @@
-name: add_graphql_logic
-description: Add GraphQL logic to a Flutter project
+name: feature_graphql_brick
+description: A brick to generate Clean Architecture feature structure for Flutter apps with GraphQL
 version: 0.1.0
 environment:
   mason: ^0.1.0

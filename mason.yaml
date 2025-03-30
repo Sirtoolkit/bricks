@@ -1,9 +1,9 @@
 bricks:
-  feature_brick:
-    path: feature_brick
+  feature_rest_brick:
+    path: feature_rest_brick
   
   core_brick:
     path: core_brick
 
-  add_graphql_logic:
-    path: add_graphql_logic  
+  feature_graphql_brick:
+    path: feature_graphql_brick  

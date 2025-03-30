@@ -1,4 +1,4 @@
-name: feature_brick
+name: feature_rest_brick
 description: A brick to generate Clean Architecture feature structure for Flutter apps
 version: 0.1.0
 environment:
