@@ -1,0 +1,14 @@
+name: add_graphql_logic
+description: Add GraphQL logic to a Flutter project
+version: 0.1.0
+environment:
+  mason: ^0.1.0
+vars:
+  name:
+    type: string
+    description: Feature name
+    prompt: What is the name of your feature?
+  project_name:
+    type: string
+    description: Project name (should match pubspec.yaml name)
+    prompt: What is your project name?
