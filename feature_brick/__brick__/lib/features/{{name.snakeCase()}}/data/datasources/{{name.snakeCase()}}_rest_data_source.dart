@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+
 import 'package:{{project_name}}/core/core.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/models/{{name.snakeCase()}}_model.dart';
 
@@ -9,12 +10,12 @@ final dataListMock = [
   {"id": 3, "name": "fugiat veniam minus"},
 ];
 
-abstract class {{name.pascalCase()}}RemoteDataSource {
+abstract class {{name.pascalCase()}}RestDataSource {
   Future<Result<List<{{name.pascalCase()}}Model>>> findAll();
 }
 
-@LazySingleton(as: {{name.pascalCase()}}RemoteDataSource)
-class {{name.pascalCase()}}RemoteDataSourceImpl implements {{name.pascalCase()}}RemoteDataSource {
+@LazySingleton(as: {{name.pascalCase()}}RestDataSource)
+class {{name.pascalCase()}}RemoteDataSourceImpl implements {{name.pascalCase()}}RestDataSource {
   final Dio dio;
 
   {{name.pascalCase()}}RemoteDataSourceImpl({required this.dio});
@@ -34,7 +35,7 @@ class {{name.pascalCase()}}RemoteDataSourceImpl implements {{name.pascalCase()}}
       // Mocking the response for demonstration purposes
       final data = dataListMock.map((e) => {{name.pascalCase()}}Model.fromJson(e)).toList();
       // Simulating a delay to mimic network call
-      await Future.delayed(const Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 1));
       
       return Success(data);
     } catch (e) {

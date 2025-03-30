@@ -1,9 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:{{project_name}}/core/error/app_exception.dart';
-import 'package:{{project_name}}/core/usecases/use_case.dart';
+
+import 'package:{{project_name}}/core/core.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/domain/domain.dart';
-import 'package:{{project_name}}/core/state/loadable.dart';
 
 @lazySingleton
 class {{name.pascalCase()}}Cubit extends Cubit<Loadable<List<{{name.pascalCase()}}Entity>>> {

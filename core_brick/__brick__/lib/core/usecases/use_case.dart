@@ -1,4 +1,4 @@
-import '../utils/result.dart';
+import '../results/result.dart';
 
 abstract class UseCase<Type, Params> {
   Future<Result<Type>> call(Params params);

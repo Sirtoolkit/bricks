@@ -1,18 +1,19 @@
-import 'package:{{project_name}}/core/core.dart';
 import 'package:injectable/injectable.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/datasources/{{name.snakeCase()}}_remote_data_source.dart';
+
+import 'package:{{project_name}}/core/core.dart';
+import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/datasources/{{name.snakeCase()}}_rest_data_source.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/datasources/{{name.snakeCase()}}_local_data_source.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/models/{{name.snakeCase()}}_model.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/domain/entities/{{name.snakeCase()}}_entity.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/domain/repositories/{{name.snakeCase()}}_repository.dart';
 
 @LazySingleton(as: {{name.pascalCase()}}Repository)
-class {{name.pascalCase()}}RepositoryImpl implements {{name.pascalCase()}}Repository {
-  final {{name.pascalCase()}}RemoteDataSource remoteDataSource;
+class {{name.pascalCase()}}RepositoryRest implements {{name.pascalCase()}}Repository {
+  final {{name.pascalCase()}}RestDataSource restDataSource;
   final {{name.pascalCase()}}LocalDataSource localDataSource;
   final ConnectivityService connectivityService;
 
-  {{name.pascalCase()}}RepositoryImpl({
+  {{name.pascalCase()}}RepositoryRest({
     required this.remoteDataSource,
     required this.localDataSource,
     required this.connectivityService,
@@ -27,7 +28,7 @@ class {{name.pascalCase()}}RepositoryImpl implements {{name.pascalCase()}}Reposi
       return Success(cached.map((e) => e.toEntity()).toList());
     }
 
-    final result = await remoteDataSource.findAll();
+    final result = await restDataSource.findAll();
 
     return result.when(
       success: (data) async {
