@@ -7,3 +7,6 @@ bricks:
 
   feature_graphql_brick:
     path: feature_graphql_brick  
+
+  graphql_service_brick:
+    path: graphql_service_brick

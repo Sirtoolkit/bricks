@@ -1,0 +1,5 @@
+name: graphql_service_brick
+description: A brick for creating a GraphQL service in Dart.
+version: 0.1.0
+environment:
+  mason: ^0.1.0
