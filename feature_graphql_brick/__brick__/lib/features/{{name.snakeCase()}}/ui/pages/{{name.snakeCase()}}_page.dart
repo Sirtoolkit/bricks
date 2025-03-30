@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:{{project_name}}/core/core.dart';
+import 'package:{{project_name}}/shared/shared.dart';
 import 'package:{{project_name}}/features/{{name.snakeCase()}}/{{name.snakeCase()}}.dart';
 
 class {{name.pascalCase()}}Page extends StatefulWidget {
@@ -50,13 +51,13 @@ class _{{name.pascalCase()}}PageState extends State<{{name.pascalCase()}}Page> {
                   physics: const AlwaysScrollableScrollPhysics(),
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
-                    child: BlocBuilder<{{name.pascalCase()}}Cubit, Loadable<List<{{name.pascalCase()}}Entity>>>(
+                    child: BlocBuilder<{{name.pascalCase()}}Cubit, DataState<List<{{name.pascalCase()}}Entity>>>(
                       builder: (_, state) {
                         return switch (state) {
-                          LoadableLoading() => const Center(
+                          DataStateLoading() => const Center(
                             child: CircularProgressIndicator(),
                           ),
-                          LoadableError(:final error, :final message) => Column(
+                          DataStateError(:final error, :final message) => Column(
                             children: [
                               if (error is NetworkException) ...[
                                 Text(
@@ -72,7 +73,7 @@ class _{{name.pascalCase()}}PageState extends State<{{name.pascalCase()}}Page> {
                               ],
                             ],
                           ),
-                         LoadableSuccess(:final data) => ListView.separated(
+                         DataStateSuccess(:final data) => ListView.separated(
                             separatorBuilder: (_, __) => SizedBox(height: 12),
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
