@@ -23,7 +23,7 @@ class {{name.pascalCase()}}GraphQLDataSourceImpl implements {{name.pascalCase()}
     try {
       final result = await client.query(
         QueryOptions(
-          document: gql({{name.camelCase()}}Queries.findAll),
+          document: gql({{name.pascalCase()}}Queries.findAll),
           fetchPolicy: FetchPolicy.networkOnly,
         ),
       );
@@ -48,7 +48,7 @@ class {{name.pascalCase()}}GraphQLDataSourceImpl implements {{name.pascalCase()}
     try {
       final result = await client.query(
         QueryOptions(
-          document: gql({{name.camelCase()}}Queries.findById),
+          document: gql({{name.pascalCase()}}Queries.findById),
           variables: {'id': id},
           fetchPolicy: FetchPolicy.networkOnly,
         ),
@@ -75,7 +75,7 @@ class {{name.pascalCase()}}GraphQLDataSourceImpl implements {{name.pascalCase()}
     try {
       final result = await client.mutate(
         MutationOptions(
-          document: gql({{name.camelCase()}}Mutations.create),
+          document: gql({{name.pascalCase()}}Mutations.create),
           variables: {
             'input': model.toJson(),
           },
@@ -103,7 +103,7 @@ class {{name.pascalCase()}}GraphQLDataSourceImpl implements {{name.pascalCase()}
     try {
       final result = await client.mutate(
         MutationOptions(
-          document: gql({{name.camelCase()}}Mutations.update),
+          document: gql({{name.pascalCase()}}Mutations.update),
           variables: {
             'id': model.id,
             'input': model.toJson(),
@@ -132,7 +132,7 @@ class {{name.pascalCase()}}GraphQLDataSourceImpl implements {{name.pascalCase()}
     try {
       final result = await client.mutate(
         MutationOptions(
-          document: gql({{name.camelCase()}}Mutations.delete),
+          document: gql({{name.pascalCase()}}Mutations.delete),
           variables: {'id': id},
         ),
       );
