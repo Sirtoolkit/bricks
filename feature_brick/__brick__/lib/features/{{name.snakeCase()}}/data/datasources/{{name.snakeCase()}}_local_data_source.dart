@@ -1,6 +1,7 @@
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/data.dart';
 import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
+
+import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/data.dart';
 
 abstract class {{name.pascalCase()}}LocalDataSource {
   Future<void> cache{{name.pascalCase()}}(List<{{name.pascalCase()}}Model> {{name.snakeCase()}});

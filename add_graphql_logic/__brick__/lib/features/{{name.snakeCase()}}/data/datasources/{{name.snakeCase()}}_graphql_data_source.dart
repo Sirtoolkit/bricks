@@ -2,9 +2,7 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:injectable/injectable.dart';
 
 import 'package:{{project_name}}/core/core.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/models/{{name.snakeCase()}}_model.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/datasources/graphql/queries.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/datasources/graphql/mutations.dart';
+import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/data.dart';
 
 abstract class {{name.pascalCase()}}GraphQLDataSource {
   Future<Result<List<{{name.pascalCase()}}Model>>> findAll();

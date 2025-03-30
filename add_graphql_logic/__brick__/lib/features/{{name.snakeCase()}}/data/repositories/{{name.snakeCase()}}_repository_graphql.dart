@@ -1,11 +1,8 @@
 import 'package:injectable/injectable.dart';
 
 import 'package:{{project_name}}/core/core.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/datasources/graphql/{{name.snakeCase()}}_graphql_data_source.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/datasources/{{name.snakeCase()}}_local_data_source.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/models/{{name.snakeCase()}}_model.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/domain/entities/{{name.snakeCase()}}_entity.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/domain/repositories/{{name.snakeCase()}}_repository.dart';
+import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/data.dart';
+import 'package:{{project_name}}/features/{{name.snakeCase()}}/domain/domain.dart';
 
 @LazySingleton(as: {{name.pascalCase()}}Repository)
 class {{name.pascalCase()}}RepositoryGraphQL implements {{name.pascalCase()}}Repository {

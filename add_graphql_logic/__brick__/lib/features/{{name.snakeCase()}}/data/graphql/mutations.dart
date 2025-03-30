@@ -1,4 +1,4 @@
-class {{name.camelCase()}}Mutations {
+class {{name.pascalCase()}}Mutations {
   // GraphQL mutation to create a new item
   static const String create = r'''
     mutation Create{{name.pascalCase()}}($input: {{name.pascalCase()}}Input!) {

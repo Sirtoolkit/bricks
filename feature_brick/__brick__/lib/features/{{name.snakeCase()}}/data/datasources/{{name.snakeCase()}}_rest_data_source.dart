@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
 import 'package:{{project_name}}/core/core.dart';
-import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/models/{{name.snakeCase()}}_model.dart';
+import 'package:{{project_name}}/features/{{name.snakeCase()}}/data/data.dart';
 
 final dataListMock = [
   {"id": 1, "name": "delectus aut autem"},

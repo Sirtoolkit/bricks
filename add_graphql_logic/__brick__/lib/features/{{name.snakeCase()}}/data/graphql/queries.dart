@@ -1,4 +1,4 @@
-class {{name.camelCase()}}Queries {
+class {{name.pascalCase()}}Queries {
   // GraphQL query to get all items
   static const String findAll = r'''
     query GetAll{{name.pascalCase()}} {
