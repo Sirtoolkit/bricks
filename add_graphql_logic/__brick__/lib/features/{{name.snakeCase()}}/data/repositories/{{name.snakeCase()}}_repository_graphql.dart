@@ -35,4 +35,110 @@ class {{name.pascalCase()}}RepositoryGraphQL implements {{name.pascalCase()}}Rep
       failure: (failure) => Error(failure),
     );
   }
+  
+  // @override
+  // Future<Result<{{name.pascalCase()}}Entity>> findById(int id) async {
+  //   final isConnected = await connectivityService.isConnected();
+    
+  //   if (!isConnected) {
+  //     return Error(NetworkException('No internet connection'));
+  //   }
+    
+  //   final result = await graphQLDataSource.findById(id);
+    
+  //   return result.when(
+  //     success: (data) => Success(data.toEntity()),
+  //     failure: (failure) => Error(failure),
+  //   );
+  // }
+  
+  // @override
+  // Future<Result<{{name.pascalCase()}}Entity>> create({{name.pascalCase()}}Entity entity) async {
+  //   final isConnected = await connectivityService.isConnected();
+    
+  //   if (!isConnected) {
+  //     return Error(NetworkException('No internet connection'));
+  //   }
+    
+  //   final model = {{name.pascalCase()}}Model(
+  //     id: entity.id,
+  //     name: entity.name,
+  //     // Add other fields as needed
+  //   );
+    
+  //   final result = await graphQLDataSource.create(model);
+    
+  //   return result.when(
+  //     success: (data) async {
+  //       // Update local cache with latest data
+  //       final allData = await localDataSource.getCached{{name.pascalCase()}}();
+  //       allData.add(data);
+  //       await localDataSource.cache{{name.pascalCase()}}(allData);
+        
+  //       return Success(data.toEntity());
+  //     },
+  //     failure: (failure) => Error(failure),
+  //   );
+  // }
+  
+  // @override
+  // Future<Result<{{name.pascalCase()}}Entity>> update({{name.pascalCase()}}Entity entity) async {
+  //   final isConnected = await connectivityService.isConnected();
+    
+  //   if (!isConnected) {
+  //     return Error(NetworkException('No internet connection'));
+  //   }
+    
+  //   final model = {{name.pascalCase()}}Model(
+  //     id: entity.id,
+  //     name: entity.name,
+  //     // Add other fields as needed
+  //   );
+    
+  //   final result = await graphQLDataSource.update(model);
+    
+  //   return result.when(
+  //     success: (data) async {
+  //       // Update local cache with latest data
+  //       final allData = await localDataSource.getCached{{name.pascalCase()}}();
+  //       final index = allData.indexWhere((item) => item.id == data.id);
+        
+  //       if (index != -1) {
+  //         allData[index] = data;
+  //       } else {
+  //         allData.add(data);
+  //       }
+        
+  //       await localDataSource.cache{{name.pascalCase()}}(allData);
+        
+  //       return Success(data.toEntity());
+  //     },
+  //     failure: (failure) => Error(failure),
+  //   );
+  // }
+  
+  // @override
+  // Future<Result<bool>> delete(int id) async {
+  //   final isConnected = await connectivityService.isConnected();
+    
+  //   if (!isConnected) {
+  //     return Error(NetworkException('No internet connection'));
+  //   }
+    
+  //   final result = await graphQLDataSource.delete(id);
+    
+  //   return result.when(
+  //     success: (success) async {
+  //       if (success) {
+  //         // Update local cache to remove the deleted item
+  //         final allData = await localDataSource.getCached{{name.pascalCase()}}();
+  //         allData.removeWhere((item) => item.id == id);
+  //         await localDataSource.cache{{name.pascalCase()}}(allData);
+  //       }
+        
+  //       return Success(success);
+  //     },
+  //     failure: (failure) => Error(failure),
+  //   );
+  // }
 }
