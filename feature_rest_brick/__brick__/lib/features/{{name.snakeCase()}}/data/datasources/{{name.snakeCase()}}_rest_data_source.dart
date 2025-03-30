@@ -26,7 +26,7 @@ class {{name.pascalCase()}}RemoteDataSourceImpl implements {{name.pascalCase()}}
       // Uncomment the following lines to use the actual API
       // final response = await dio.get('/{{name.snakeCase()}}');
       // if (response.statusCode != 200) {
-      //   return Error(ServerException('Error: Received invalid status code ${response.statusCode}'));
+      //   return Error(BadRequestException('Error: Received invalid status code ${response.statusCode}'));
       // }
       // final json = response.data as Map<String, dynamic>;
       // final dataList = json['data'] as List;
@@ -39,7 +39,7 @@ class {{name.pascalCase()}}RemoteDataSourceImpl implements {{name.pascalCase()}}
       
       return Success(data);
     } catch (e) {
-      return Error(ServerException('Dio Error: ${e.toString()}'));
+      return Error(BadRequestException('Dio Error: ${e.toString()}'));
     }
   }
 }

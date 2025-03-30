@@ -29,7 +29,7 @@ class {{name.pascalCase()}}GraphQLDataSourceImpl implements {{name.pascalCase()}
       );
 
       if (result.hasException) {
-        return Error(ServerException(result.exception.toString()));
+        return Error(BadRequestException(result.exception.toString()));
       }
 
       final dataList = result.data?['{{name.camelCase()}}s'] as List<dynamic>? ?? [];
@@ -39,7 +39,7 @@ class {{name.pascalCase()}}GraphQLDataSourceImpl implements {{name.pascalCase()}
 
       return Success(models);
     } catch (e) {
-      return Error(ServerException('GraphQL Error: ${e.toString()}'));
+      return Error(BadRequestException('GraphQL Error: ${e.toString()}'));
     }
   }
 
@@ -55,7 +55,7 @@ class {{name.pascalCase()}}GraphQLDataSourceImpl implements {{name.pascalCase()}
       );
 
       if (result.hasException) {
-        return Error(ServerException(result.exception.toString()));
+        return Error(BadRequestException(result.exception.toString()));
       }
 
       final data = result.data?['{{name.camelCase()}}'] as Map<String, dynamic>?;
@@ -66,7 +66,7 @@ class {{name.pascalCase()}}GraphQLDataSourceImpl implements {{name.pascalCase()}
 
       return Success({{name.pascalCase()}}Model.fromJson(data));
     } catch (e) {
-      return Error(ServerException('GraphQL Error: ${e.toString()}'));
+      return Error(BadRequestException('GraphQL Error: ${e.toString()}'));
     }
   }
 
@@ -83,18 +83,18 @@ class {{name.pascalCase()}}GraphQLDataSourceImpl implements {{name.pascalCase()}
       );
 
       if (result.hasException) {
-        return Error(ServerException(result.exception.toString()));
+        return Error(BadRequestException(result.exception.toString()));
       }
 
       final data = result.data?['create{{name.pascalCase()}}'] as Map<String, dynamic>?;
       
       if (data == null) {
-        return Error(ServerException('Failed to create {{name.camelCase()}}'));
+        return Error(BadRequestException('Failed to create {{name.camelCase()}}'));
       }
       
       return Success({{name.pascalCase()}}Model.fromJson(data));
     } catch (e) {
-      return Error(ServerException('GraphQL Error: ${e.toString()}'));
+      return Error(BadRequestException('GraphQL Error: ${e.toString()}'));
     }
   }
 
@@ -112,18 +112,18 @@ class {{name.pascalCase()}}GraphQLDataSourceImpl implements {{name.pascalCase()}
       );
 
       if (result.hasException) {
-        return Error(ServerException(result.exception.toString()));
+        return Error(BadRequestException(result.exception.toString()));
       }
 
       final data = result.data?['update{{name.pascalCase()}}'] as Map<String, dynamic>?;
       
       if (data == null) {
-        return Error(ServerException('Failed to update {{name.camelCase()}}'));
+        return Error(BadRequestException('Failed to update {{name.camelCase()}}'));
       }
       
       return Success({{name.pascalCase()}}Model.fromJson(data));
     } catch (e) {
-      return Error(ServerException('GraphQL Error: ${e.toString()}'));
+      return Error(BadRequestException('GraphQL Error: ${e.toString()}'));
     }
   }
 
@@ -138,13 +138,13 @@ class {{name.pascalCase()}}GraphQLDataSourceImpl implements {{name.pascalCase()}
       );
 
       if (result.hasException) {
-        return Error(ServerException(result.exception.toString()));
+        return Error(BadRequestException(result.exception.toString()));
       }
 
       final success = result.data?['delete{{name.pascalCase()}}'] as bool? ?? false;
       return Success(success);
     } catch (e) {
-      return Error(ServerException('GraphQL Error: ${e.toString()}'));
+      return Error(BadRequestException('GraphQL Error: ${e.toString()}'));
     }
   }
 }

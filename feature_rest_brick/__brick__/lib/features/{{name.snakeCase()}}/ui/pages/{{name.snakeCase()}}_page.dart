@@ -64,7 +64,7 @@ class _{{name.pascalCase()}}PageState extends State<{{name.pascalCase()}}Page> {
                                   style: textTheme.bodyMedium,
                                 ),
                               ],
-                              if (error is ServerException) ...[
+                              if (error is BadRequestException) ...[
                                 Text(
                                   message,
                                   style: textTheme.bodyMedium,

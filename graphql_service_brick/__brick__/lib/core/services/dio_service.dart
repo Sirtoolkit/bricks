@@ -42,7 +42,7 @@ class _ErrorInterceptor extends Interceptor {
           case 404:
             throw NotFoundException(err.message ?? '');
           case 500:
-            throw ServerException(err.message ?? '');
+            throw BadRequestException(err.message ?? '');
         }
       case DioExceptionType.unknown:
         throw NetworkException(err.message ?? '');

@@ -11,10 +11,6 @@ class NetworkException extends AppException {
   NetworkException([super.message = 'No internet connection']);
 }
 
-class ServerException extends AppException {
-  ServerException([super.message = 'Server error occurred']);
-}
-
 class NotFoundException extends AppException {
   NotFoundException([super.message = 'Resource not found']);
 }
