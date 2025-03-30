@@ -14,7 +14,7 @@ class {{name.pascalCase()}}RepositoryRest implements {{name.pascalCase()}}Reposi
   final ConnectivityService connectivityService;
 
   {{name.pascalCase()}}RepositoryRest({
-    required this.remoteDataSource,
+    required this.restDataSource,
     required this.localDataSource,
     required this.connectivityService,
   });
