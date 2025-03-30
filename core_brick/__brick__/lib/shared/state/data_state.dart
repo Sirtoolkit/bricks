@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../core/error/app_exception.dart';
-part '../../core/state/data_state.freezed.dart';
+
+part 'data_state.freezed.dart';
 
 @freezed
 sealed class DataState<T> with _$DataState<T> {
